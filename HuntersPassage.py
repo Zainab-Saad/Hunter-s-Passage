@@ -3,8 +3,6 @@ import timeit
 from winsound import *
 from random import randint as rand
 
-
-#all the code within functions go here
 #define radiobuttons of mode button
 mode_selected=False
 def mode_click():
@@ -17,15 +15,6 @@ def mode_click():
 
 stopped=False
 bosskey=True
-
-
-#--------------------------------------------------------------------------------
-
-#--------------------------------------------------------------------------------
-
-
-
-
 
 
 #boss key , window minimizes on pressing b on keyboard
@@ -46,8 +35,6 @@ def pause_play(event):
     else:
         stopped = True
 
-
-#--------------------------------------------------------------------------------
 #checks after intervals if bullet hits enemy, if it does delete bullet and enemy from canvas, and add 100 points to total score
 def killing_enemy():
     global points_on_shooting
@@ -166,10 +153,6 @@ def killing_enemy():
         
         Variable=False
         
-    
-    
-
-#--------------------------------------------------------------------------------
 #release bullets upon pressing spacebar
 def shoot(event):
     
@@ -198,7 +181,6 @@ def shoot(event):
         
     bullet_move()
     
-#--------------------------------------------------------------------------------
 #next four functions bounce the enemy back when it hits the screen and changes its speed upon bouncing too IN LEVEL 1
 def move_enemy_up1():
     global eB1
@@ -255,10 +237,7 @@ def move_enemy_up4():
         window.after(50,move_enemy_up4)
     else:
         window.after(50,move_enemy4)
-#-------------------------------------------------------------------------------
-
-   
-#-------------------------------------------------------------------------------
+        
 #next 4 functions move the enemy IN LEVEL 1
 def move_enemy1():
     global eB1
@@ -310,10 +289,7 @@ def move_enemy4():
         window.after(50,move_enemy4)
     if eB4[3]<=5:
         move_enemy_up4()
-#------------------------------------------------------------------------------------
-
-
-#------------------------------------------------------------------------------------
+        
 
 #check collision detection in level 1
 #1)determine the bbox of 4 enemies
@@ -394,8 +370,8 @@ def collisionDetection():
 
         lf.place(x=450,y=220)
     ########################################
-
-#-----------------------------------------------------------------------------------
+    
+    
 #collision detection with enemies in level 2
 #1)determine the bbox of 10 enemies
 #2)display label upon collision
@@ -662,8 +638,6 @@ def collisiondetection_L2():
     #################################   
     
 
-#-----------------------------------------------------------------------------------
-
 #setting up canvas for level 1
 #placing shooter and 4 enemies
 def canvas_thingsL1():
@@ -708,8 +682,6 @@ def canvas_thingsL1():
         bg_lightmode()
         
         
-        
-    #PlaySound("C://Users//zaina//Downloads//file_example_WAV_10MG.wav",SND_FILENAME)
     lbl=canvas.create_text(1220,20,text="END",font=("Arial 20 bold"))
 
     global img
@@ -746,8 +718,7 @@ def canvas_thingsL1():
     eB3=canvas.bbox("enemy3")
     global eB4
     eB4=canvas.bbox("enemy4")
-
-#----------------------------------------------------------------------------------
+    
 #setting up canvas for level 2
 #plaicing shooter and 10 enemies
 def canvas_thingsL2():
@@ -857,7 +828,8 @@ def canvas_thingsL2():
     ###############################
     global points_on_shooting
     points_on_shooting=0
-#--------------------------------------------------------------------------------
+    
+    
 #destroy canvas and change score in score label in main menu if player wants to go bak to main menu
 def two_commands():
     canvas.destroy()
@@ -887,7 +859,8 @@ def scoring_mechanism_L2():
     file.close()
     global txt
     txt="LEVEL CLEARED\nSCORE:"+str(points_L2+points_on_shooting)
-#--------------------------------------------------------------------------------
+    
+    
 #main game loop for level 2
 def game_loopL2():
     global t2
@@ -997,7 +970,6 @@ def game_loopL2():
     canvas.bind_all("<space>",shoot)
     canvas.bind_all("<p>",pause_play)
 
-#-----------------------------------------------------------------------------------
 #destroy canvas and change main score if player wants to go back to main menu after clearing level 1
 def TWO_COMMANDS():
     canvas.destroy()
@@ -1005,7 +977,6 @@ def TWO_COMMANDS():
     score_lbl.config(font=('Helvetica ',15,'italic'))
     score_lbl.place(x=0,y=0)
     
-#-----------------------------------------------------------------------------------
 #scoring mech for level 1
 def scoring_mechanism_L1():
     global points_L1
@@ -1025,10 +996,6 @@ def scoring_mechanism_L1():
     txt="LEVEL CLEARED\nSCORE:"+str(total_score)
     return points_L1
 
-#-----------------------------------------------------------------------------------
-
-
-#------------------------------------------------------------------------------------
 #the main game loop of L1 goes here
 #1)define the movement of shooter with arrow keys
 #2)determine the bbox of shooter
